@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/server';
 import LogoutButton from './LogoutButton';
 
 export default async function Navbar() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   return (

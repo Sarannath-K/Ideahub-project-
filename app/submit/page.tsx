@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import IdeaForm from '@/components/IdeaForm';
 
 export default async function SubmitPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

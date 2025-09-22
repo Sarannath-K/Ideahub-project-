@@ -3,7 +3,7 @@ import { createClient } from '@/utils/supabase/server';
 import CommentForm from './CommentForm';
 
 export default async function Comments({ ideaId }: { ideaId: number }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   const { data: comments } = await supabase

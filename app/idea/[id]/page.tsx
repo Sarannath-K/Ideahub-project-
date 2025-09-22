@@ -6,7 +6,7 @@ import Comments from '@/components/Comments';
 export const revalidate = 0;
 
 export default async function IdeaPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: idea, error } = await supabase
     .from('ideas')

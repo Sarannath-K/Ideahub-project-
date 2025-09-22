@@ -1,10 +1,9 @@
 // utils/supabase/server.ts
-
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export function createClient() {
-  const cookieStore = cookies()
+export async function createClient() { // <-- Added 'async'
+  const cookieStore = await cookies() // <-- Added 'await'
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -14,7 +13,6 @@ export function createClient() {
         get(name: string) {
           return cookieStore.get(name)?.value
         },
-        // This is the important part!
         set(name: string, value: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value, ...options })
