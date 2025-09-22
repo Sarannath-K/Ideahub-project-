@@ -31,7 +31,7 @@ export default async function IdeaPage({ params }: { params: { id: string } }) {
         </div>
         <p className="text-gray-200 my-4 whitespace-pre-wrap">{idea.description}</p>
         <div className="flex flex-wrap gap-2">
-          {idea.tags?.map((tag) => (
+          {idea.tags?.map((tag: string) => (
             <span key={tag} className="bg-gray-700 text-gray-200 text-xs font-semibold px-2.5 py-0.5 rounded-full">
               {tag}
             </span>
